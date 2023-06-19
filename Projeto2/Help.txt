@@ -1,0 +1,49 @@
+adiciona s0 o primeiro valor do array
+addi	s0	s0	array
+opcode	r0	r1	r2
+0	7	7	0
+
+carrega o primeiro numero do array em t0
+lw	t1	s0
+	t0  +	valor de s0
+2	0	7	0
+
+adiciona 9 a t1(comprimento da lista)
+lw	t2	t7($zero)	12
+2	1	6		c
+
+adiciona 1 para ir ao proximo elemento
+addi	s0	s0	1
+0	7	7	1
+
+verifica se t1 e t7 são iguais, se forem pula
+beq	t2	t7(zero)	11
+1	1	6	c
+
+carrega o proximo numero do array
+lw	t3	s0	0
+2	2	7	0
+
+compara se o atual é maior que o proximo, se for pula
+bge	t1	t3	8
+3	0	2	8
+
+move o maior numero para o atual
+lw	t1	t3
+2	0	2	0
+
+diminui o tamanho do array
+sub	t2	t2	-1
+4	1	1	1
+
+aponta para o proximo valor
+addi	s0	s0	1
+0	7	7	1
+
+volta para o loop de comparação
+j			4
+5	0	0	4
+
+acabou o programa
+j			11
+5	0	0	b
